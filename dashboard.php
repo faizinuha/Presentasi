@@ -37,6 +37,48 @@
       border-radius: 0.25rem;
       margin-top: 1rem;
     }
+
+
+
+
+    .card-img-top {
+      border-radius: 20 30px;
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+  
+    .card-footer {
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+    .card-body {
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .card-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, rgba(15, 37, 110, 1) 12%, rgba(26, 189, 162, 1) 61%, rgba(7, 21, 179, 1) 84%);
+      background-blend-mode: normal;
+      border-radius: 10px;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .card-body:hover .card-overlay {
+      opacity: 1;
+    }
+    .card-body:hover .card-title {
+      opacity: 1;
+    }
+    
   </style>
 </head>
 
@@ -59,6 +101,78 @@
         <img src="img/Yokohama National university.jpg" class="img-fluid img-rounded" alt="Yokohama National University">
       </div>
     </div>
+    <div class="container mt-5">
+    <h3 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" class="mb-4">Negara Paling Populer</h3>
+    <p>Telah bekerja sama dengan University Toin-Univ-of-Yokohama</p>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div class="col">
+        <div class="card">
+          <img src="negara/china.jpeg" class="card-img-top" alt="China">
+          <div class="card-body">
+            <h5 class="card-title">China</h5>
+            <div class="card-overlay">
+              <a href="#" class="btn btn-primary">Baca selengkapnya</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <img src="negara/meksiko.jpg" class="card-img-top" alt="Meksiko">
+          <div class="card-body">
+            <h5 class="card-title">Meksiko</h5>
+            <div class="card-overlay">
+              <a href="#" class="btn btn-primary">Baca selengkapnya</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <img src="negara/spayol.jpg" class="card-img-top" alt="Spanyol">
+          <div class="card-body">
+            <h5 class="card-title">Spanyol</h5>
+            <div class="card-overlay">
+              <a href="#" class="btn btn-primary">Baca selengkapnya</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <img src="negara/Prancis.jpg" class="card-img-top" alt="Perancis">
+          <div class="card-body">
+            <h5 class="card-title">Perancis</h5>
+            <div class="card-overlay">
+              <a href="#" class="btn btn-primary">Baca selengkapnya</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <img src="negara/selandia_baru.jpg" class="card-img-top" alt="Selandia Baru">
+          <div class="card-body">
+            <h5 class="card-title">Selandia Baru</h5>
+            <div class="card-overlay">
+              <a href="#" class="btn btn-primary">Baca selengkapnya</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <img src="negara/malaysia.jpeg" class="card-img-top" alt="Malaysia">
+          <div class="card-body">
+            <h5 class="card-title">Malaysia</h5>
+            <div class="card-overlay">
+              <a href="#" class="btn btn-primary">Baca selengkapnya</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><hr>
   </div>
 
 
