@@ -85,6 +85,7 @@
 <body>
   <h2 class="text-center main-Y">Toin University of Yokohama Central</h2>
   <p class="text-center" >Welcome Daigaku University Toin University of Yokohama </p>
+  <p class="text-center underline " ><a href="jumlahsemua.php">See You Count Date</a></p>
   <hr>
   <div class="card mb-3">
     <img src="img/deparment_toin.png" class="rounded mx-auto d-block main-title" alt="Opening">
