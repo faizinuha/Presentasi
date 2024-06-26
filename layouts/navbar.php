@@ -38,7 +38,7 @@
             <a class="nav-link active" href="../jurusan/index.php">Data Jurusan</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="../crud_info_pribadi/organisadi.php">Data Organisasi</a>
+            <a class="nav-link active" href="../jurusan/organisasi.php ">Data Organisasi</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" href="../crud_info_pribadi/index.php">Daftar Mahasiswa</a>
