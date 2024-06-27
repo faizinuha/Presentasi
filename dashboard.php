@@ -12,13 +12,14 @@ if (!$conn) {
 // Query untuk mengambil jumlah data dari masing-masing tabel
 // fungsinya adalah mengambil data dari inputan dan menjadikan menjadi ninal data
 // Fungsi untuk mendapatkan total data dari tabel
-function getTotalData($conn, $query) {
+function getTotalData($conn, $query)
+{
   $result = mysqli_query($conn, $query);
   if ($result) {
-      $row = mysqli_fetch_assoc($result);
-      return $row['total'];
+    $row = mysqli_fetch_assoc($result);
+    return $row['total'];
   } else {
-      return 0;
+    return 0;
   }
 }
 
@@ -47,17 +48,14 @@ require_once __DIR__ . '/layouts/navbar.php';
   <!-- data-aos -->
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-  <link rel="stylesheet" href="Colors.css">
+  <!-- SweetAlert -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <style>
     .main-Y {
       text-align: center;
     }
 
     .main-title {
-      image-resolution: from-image;
-      image-resolution: 300dpi;
-      image-resolution: from-image 300dpi;
-      image-resolution: 300dpi snap;
       width: 900px;
     }
 
@@ -75,11 +73,6 @@ require_once __DIR__ . '/layouts/navbar.php';
       width: 100%;
       height: 200px;
       object-fit: cover;
-
-    }
-
-    :-ms-fullscreen :-ms-keyboard-active .card-footer {
-      background-color: rgba(255, 255, 255, 0.8);
     }
 
     .card-body {
@@ -109,15 +102,10 @@ require_once __DIR__ . '/layouts/navbar.php';
       opacity: 1;
     }
 
-    .card-body:hover .card-title {
-      opacity: 1;
-    }
-
     .text {
       position: relative;
       right: -600px;
       transition: 0.2s;
-      /* Tambahkan transisi untuk semua properti */
     }
 
     .text:hover {
@@ -129,11 +117,10 @@ require_once __DIR__ . '/layouts/navbar.php';
 
 <body>
   <h2 class="text-center main-Y">Toin University of Yokohama Central</h2>
-  <p class="text-center">Welcome Daigaku University Toin University of Yokohama </p>
-  <!-- <p class="text-center underline"><a href="jumlahsemua.php">See You Count Date</a></p> -->
+  <p class="text-center">Welcome Daigaku University Toin University of Yokohama</p>
   <button type="button" class="btn btn-primary text" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-    see You All Date
-</button>
+    See All Data
+  </button>
   <hr>
   <div class="card mb-3">
     <img src="img/deparment_toin.png" class="rounded mx-auto d-block main-title" alt="Opening">
@@ -160,7 +147,7 @@ require_once __DIR__ . '/layouts/navbar.php';
             <div class="card-body">
               <h5 class="card-title">China</h5>
               <div class="card-overlay">
-                <a href="#" class="btn btn-primary">Baca selengkapnya</a>
+                <a href="#" class="btn btn-primary" onclick="showAlert('China')">Baca selengkapnya</a>
               </div>
             </div>
           </div>
@@ -171,7 +158,7 @@ require_once __DIR__ . '/layouts/navbar.php';
             <div class="card-body">
               <h5 class="card-title">Meksiko</h5>
               <div class="card-overlay">
-                <a href="#" class="btn btn-primary">Baca selengkapnya</a>
+                <a href="#" class="btn btn-primary" onclick="showAlert('Meksiko')">Baca selengkapnya</a>
               </div>
             </div>
           </div>
@@ -182,7 +169,7 @@ require_once __DIR__ . '/layouts/navbar.php';
             <div class="card-body">
               <h5 class="card-title">Spanyol</h5>
               <div class="card-overlay">
-                <a href="#" class="btn btn-primary">Baca selengkapnya</a>
+                <a href="#" class="btn btn-primary" onclick="showAlert('Spanyol')">Baca selengkapnya</a>
               </div>
             </div>
           </div>
@@ -193,7 +180,7 @@ require_once __DIR__ . '/layouts/navbar.php';
             <div class="card-body">
               <h5 class="card-title">Perancis</h5>
               <div class="card-overlay">
-                <a href="#" class="btn btn-primary">Baca selengkapnya</a>
+                <a href="#" class="btn btn-primary" onclick="showAlert('Perancis')">Baca selengkapnya</a>
               </div>
             </div>
           </div>
@@ -204,7 +191,7 @@ require_once __DIR__ . '/layouts/navbar.php';
             <div class="card-body">
               <h5 class="card-title">Selandia Baru</h5>
               <div class="card-overlay">
-                <a href="#" class="btn btn-primary">Baca selengkapnya</a>
+                <a href="#" class="btn btn-primary" onclick="showAlert('Selandia Baru')">Baca selengkapnya</a>
               </div>
             </div>
           </div>
@@ -215,7 +202,7 @@ require_once __DIR__ . '/layouts/navbar.php';
             <div class="card-body">
               <h5 class="card-title">Malaysia</h5>
               <div class="card-overlay">
-                <a href="#" class="btn btn-primary">Baca selengkapnya</a>
+                <a href="#" class="btn btn-primary" onclick="showAlert('Malaysia')">Baca selengkapnya</a>
               </div>
             </div>
           </div>
@@ -224,100 +211,96 @@ require_once __DIR__ . '/layouts/navbar.php';
     </div>
     <hr>
   </div>
-  <!-- gambar selanjutnya -->
-
 
   <!-- modal data -->
   <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5 text-center " id="staticBackdropLabel">All data</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-      <div class="container mt-5">
-          <h1 class="text-center mb-4">Jumlah Semua Data</h1>
-          <div class="row">
-            <div class="col-md-4 mb-4">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Data Dosen</h5>
-                  <p class="card-text">
-                    <?php echo htmlspecialchars($total_data_dosen); ?>
-                    <i class='bx <?php echo $total_data_dosen > 0 ? "bx-check-circle" : "bx-x-circle"; ?>'></i>
-                  </p>
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5 text-center" id="staticBackdropLabel">All data</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="container mt-5">
+            <h1 class="text-center mb-4">Jumlah Semua Data</h1>
+            <div class="row">
+              <div class="col-md-4 mb-4">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Data Dosen</h5>
+                    <p class="card-text">
+                      <?php echo htmlspecialchars($total_data_dosen); ?>
+                      <i class='bx <?php echo $total_data_dosen > 0 ? "bx-check-circle" : "bx-x-circle"; ?>'></i>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 mb-4">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Info Pribadi</h5>
+                    <p class="card-text">
+                      <?php echo htmlspecialchars($total_info_pribadi); ?>
+                      <i class='bx <?php echo $total_info_pribadi > 0 ? "bx-check-circle" : "bx-x-circle"; ?>'></i>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 mb-4">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Jurusan dan Fakultas</h5>
+                    <p class="card-text">
+                      <?php echo htmlspecialchars($total_jurusan_fakultas); ?>
+                      <i class='bx <?php echo $total_jurusan_fakultas > 0 ? "bx-check-circle" : "bx-x-circle"; ?>'></i>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 mb-4">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Organisasi</h5>
+                    <p class="card-text">
+                      <?php echo htmlspecialchars($total_organisasi); ?>
+                      <i class='bx <?php echo $total_organisasi > 0 ? "bx-check-circle" : "bx-x-circle"; ?>'></i>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 mb-4">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Students</h5>
+                    <p class="card-text">
+                      <?php echo htmlspecialchars($total_students); ?>
+                      <i class='bx <?php echo $total_students > 0 ? "bx-check-circle" : "bx-x-circle"; ?>'></i>
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="col-md-4 mb-4">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Info Pribadi</h5>
-                  <p class="card-text">
-                    <?php echo htmlspecialchars($total_info_pribadi); ?>
-                    <i class='bx <?php echo $total_info_pribadi > 0 ? "bx-check-circle" : "bx-x-circle"; ?>'></i>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 mb-4">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Jurusan dan Fakultas</h5>
-                  <p class="card-text">
-                    <?php echo htmlspecialchars($total_jurusan_fakultas); ?>
-                    <i class='bx <?php echo $total_jurusan_fakultas > 0 ? "bx-check-circle" : "bx-x-circle"; ?>'></i>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 mb-4">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Organisasi</h5>
-                  <p class="card-text">
-                    <?php echo htmlspecialchars($total_organisasi); ?>
-                    <i class='bx <?php echo $total_organisasi > 0 ? "bx-check-circle" : "bx-x-circle"; ?>'></i>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 mb-4">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Students</h5>
-                  <p class="card-text">
-                    <?php echo htmlspecialchars($total_students); ?>
-                    <i class='bx <?php echo $total_students > 0 ? "bx-check-circle" : "bx-x-circle"; ?>'></i>
-                  </p>
-                </div>
-              </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Understood</button>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Understood</button>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-    
-
-        <?php
-        // Menutup koneksi database jika sudah selesai digunakan
-        mysqli_close($conn);
-        ?>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-
-      </div>
-    </div>
-  </div>
   </div>
 
   <script>
     AOS.init();
+
+    function showAlert(country) {
+      Swal.fire({
+        title: 'Informasi ' + country,
+        text: 'Informasi lengkap mengenai ' + country + ' akan ditampilkan di sini.',
+        icon: 'info',
+        confirmButtonText: 'Tutup'
+      });
+    }
   </script>
   <?php require_once __DIR__ . '/footer/footer.php'; ?>
 </body>
