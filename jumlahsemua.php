@@ -7,51 +7,22 @@ if (!$conn) {
     die("Koneksi database gagal: " . mysqli_connect_error());
 }
 
-// Query untuk mengambil jumlah data dari masing-masing tabel
-$query_data_dosen = "SELECT COUNT(*) as total FROM data_dosen";
-$result_data_dosen = mysqli_query($conn, $query_data_dosen);
-if ($result_data_dosen) {
-    $row_data_dosen = mysqli_fetch_assoc($result_data_dosen);
-    $total_data_dosen = $row_data_dosen['total'];
-} else {
-    $total_data_dosen = 0;
+// Fungsi untuk mendapatkan total data dari tabel
+function getTotalData($conn, $query) {
+    $result = mysqli_query($conn, $query);
+    if ($result) {
+        $row = mysqli_fetch_assoc($result);
+        return $row['total'];
+    } else {
+        return 0;
+    }
 }
 
-$query_info_pribadi = "SELECT COUNT(*) as total FROM info_pribadi";
-$result_info_pribadi = mysqli_query($conn, $query_info_pribadi);
-if ($result_info_pribadi) {
-    $row_info_pribadi = mysqli_fetch_assoc($result_info_pribadi);
-    $total_info_pribadi = $row_info_pribadi['total'];
-} else {
-    $total_info_pribadi = 0;
-}
-
-$query_jurusan_fakultas = "SELECT COUNT(*) as total FROM jurusan_fakultas";
-$result_jurusan_fakultas = mysqli_query($conn, $query_jurusan_fakultas);
-if ($result_jurusan_fakultas) {
-    $row_jurusan_fakultas = mysqli_fetch_assoc($result_jurusan_fakultas);
-    $total_jurusan_fakultas = $row_jurusan_fakultas['total'];
-} else {
-    $total_jurusan_fakultas = 0;
-}
-
-$query_organisasi = "SELECT COUNT(*) as total FROM organisasi";
-$result_organisasi = mysqli_query($conn, $query_organisasi);
-if ($result_organisasi) {
-    $row_organisasi = mysqli_fetch_assoc($result_organisasi);
-    $total_organisasi = $row_organisasi['total'];
-} else {
-    $total_organisasi = 0;
-}
-
-$query_students = "SELECT COUNT(*) as total FROM students";
-$result_students = mysqli_query($conn, $query_students);
-if ($result_students) {
-    $row_students = mysqli_fetch_assoc($result_students);
-    $total_students = $row_students['total'];
-} else {
-    $total_students = 0;
-}
+$total_data_dosen = getTotalData($conn, "SELECT COUNT(*) as total FROM data_dosen");
+$total_info_pribadi = getTotalData($conn, "SELECT COUNT(*) as total FROM info_pribadi");
+$total_jurusan_fakultas = getTotalData($conn, "SELECT COUNT(*) as total FROM jurusan_fakultas");
+$total_organisasi = getTotalData($conn, "SELECT COUNT(*) as total FROM organisasi");
+$total_students = getTotalData($conn, "SELECT COUNT(*) as total FROM students");
 
 // Mengimpor navbar atau header jika diperlukan
 require_once __DIR__ . '/layouts/navbar.php';
@@ -65,6 +36,8 @@ require_once __DIR__ . '/layouts/navbar.php';
   <title>Jumlah Semua Data</title>
   <!-- Mengimpor Bootstrap CSS -->
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Mengimpor Boxicons -->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
   <div class="container mt-5">
@@ -74,7 +47,10 @@ require_once __DIR__ . '/layouts/navbar.php';
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Data Dosen</h5>
-            <p class="card-text"><?php echo htmlspecialchars($total_data_dosen); ?></p>
+            <p class="card-text">
+              <?php echo htmlspecialchars($total_data_dosen); ?>
+              <i class='bx <?php echo $total_data_dosen > 0 ? "bx-check-circle" : "bx-x-circle"; ?>'></i>
+            </p>
           </div>
         </div>
       </div>
@@ -82,7 +58,10 @@ require_once __DIR__ . '/layouts/navbar.php';
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Info Pribadi</h5>
-            <p class="card-text"><?php echo htmlspecialchars($total_info_pribadi); ?></p>
+            <p class="card-text">
+              <?php echo htmlspecialchars($total_info_pribadi); ?>
+              <i class='bx <?php echo $total_info_pribadi > 0 ? "bx-check-circle" : "bx-x-circle"; ?>'></i>
+            </p>
           </div>
         </div>
       </div>
@@ -90,7 +69,10 @@ require_once __DIR__ . '/layouts/navbar.php';
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Jurusan dan Fakultas</h5>
-            <p class="card-text"><?php echo htmlspecialchars($total_jurusan_fakultas); ?></p>
+            <p class="card-text">
+              <?php echo htmlspecialchars($total_jurusan_fakultas); ?>
+              <i class='bx <?php echo $total_jurusan_fakultas > 0 ? "bx-check-circle" : "bx-x-circle"; ?>'></i>
+            </p>
           </div>
         </div>
       </div>
@@ -98,7 +80,10 @@ require_once __DIR__ . '/layouts/navbar.php';
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Organisasi</h5>
-            <p class="card-text"><?php echo htmlspecialchars($total_organisasi); ?></p>
+            <p class="card-text">
+              <?php echo htmlspecialchars($total_organisasi); ?>
+              <i class='bx <?php echo $total_organisasi > 0 ? "bx-check-circle" : "bx-x-circle"; ?>'></i>
+            </p>
           </div>
         </div>
       </div>
@@ -106,7 +91,10 @@ require_once __DIR__ . '/layouts/navbar.php';
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Students</h5>
-            <p class="card-text"><?php echo htmlspecialchars($total_students); ?></p>
+            <p class="card-text">
+              <?php echo htmlspecialchars($total_students); ?>
+              <i class='bx <?php echo $total_students > 0 ? "bx-check-circle" : "bx-x-circle"; ?>'></i>
+            </p>
           </div>
         </div>
       </div>

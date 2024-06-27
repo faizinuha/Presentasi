@@ -37,7 +37,7 @@ $result = $conn->query($sql);
     
     <div class="table-container">
       <!-- Tabel untuk menampilkan data jurusan_fakultas -->
-      <table class="table table-bordered" id="data">
+      <table class="table table-bordered" id="datatable">
         <thead class="table-primary">
           <tr>
             <th>ID</th>
@@ -72,4 +72,6 @@ $result = $conn->query($sql);
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script>
-    // Jika menggunakan DataTables, pastikan plugin suda
+     new DataTable('#datatable');
+  </script>
+    <!-- // Jika menggunakan DataTables, pastikan plugin suda -->
