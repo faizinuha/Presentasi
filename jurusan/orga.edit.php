@@ -8,7 +8,7 @@ require 'db.php';
 // Mengecek apakah parameter 'id' telah diterima melalui URL
 if (!isset($_GET['id']) || empty($_GET['id'])) {
     // Jika tidak ada atau kosong, redirect ke halaman index
-    header("Location: ../index.php");
+    header("Location: /index.php");
     exit;
 }
 
@@ -26,7 +26,7 @@ if ($result->num_rows > 0) {
     $organisasi = $result->fetch_assoc();
 } else {
     // Jika tidak ditemukan, redirect ke halaman index
-    header("Location: index.php");
+    header("Location: organisasi.php");
     exit;
 }
 
@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Mengeksekusi statement
     if ($stmt->execute()) {
         // Jika update berhasil, redirect ke halaman index
-        header("Location: index.php");
+        header("Location: organisasi.php");
         exit;
     } else {
         // Jika terjadi kesalahan, tampilkan pesan kesalahan

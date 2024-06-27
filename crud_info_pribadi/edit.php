@@ -1,6 +1,5 @@
 <?php
 require_once __DIR__ . "/db.php";
-// require_once __DIR__ . "/navbar.php";
 
 if (isset($_GET['id'])) {
   $id = $_GET['id'];
@@ -10,26 +9,28 @@ if (isset($_GET['id'])) {
 }
 
 if (isset($_POST['submit'])) {
-  $input = ['name', 'alamat', 'no_telp'];
+  $input = ['nama', 'nisn', 'alamat', 'no_telp'];
   $cond = true;
 
   foreach ($input as $value) {
     if (empty($_POST[$value])) {
-      echo '<script>alert("' . $value . ' harus diisi")</script>';
-      $cond = false; // Mengubah 'break' menjadi 'false' agar kondisi tidak selalu benar jika ada yang kosong
+      echo '<script>alert("' . ucfirst($value) . ' harus diisi")</script>';
+      $cond = false;
       break;
     }
   }
 
   // Mengambil data dari input form
   $nama = htmlentities($_POST['nama']);
+  $nisn = htmlentities($_POST['nisn']);
   $alamat = htmlentities($_POST['alamat']);
-  $no_telp = htmlspecialchars($_POST['no_telp']);
+  $no_telp = htmlentities($_POST['no_telp']);
 
   if ($cond) {
     // Query update data siswa
     $query = mysqli_query($koneksi, "UPDATE info_pribadi SET 
       nama='$nama', 
+      nisn='$nisn',
       alamat='$alamat',  
       no_telp='$no_telp' 
       WHERE id='$id'");
@@ -55,35 +56,69 @@ if (isset($_POST['submit'])) {
 <body>
 <div class="container">
   <h1 class="mt-5">Edit Data</h1>
-  <form action="" method="POST" enctype="multipart/form-data">
+  <form action="" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
     <div class="row">
       <div class="col-md-6">
         <div class="mb-3">
           <label class="form-label">Nama</label>
-          <input type="text" class="form-control" name="nama" placeholder="Masukkan Nama" value="<?= $row['nama'] ?>">
+          <input type="text" class="form-control" name="nama" placeholder="Masukkan Nama" value="<?= htmlspecialchars($row['nama']) ?>" required>
+          <div class="invalid-feedback">
+            Nama harus diisi.
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label class="form-label">NISN</label>
+          <input type="text" class="form-control" name="nisn" placeholder="Masukkan NISN" value="<?= htmlspecialchars($row['nisn']) ?>" required>
+          <div class="invalid-feedback">
+            NISN harus diisi.
+          </div>
         </div>
       </div>
       <div class="col-md-6">
         <div class="mb-3">
           <label class="form-label">Alamat</label>
-          <input type="text" class="form-control" name="alamat" placeholder="Masukkan Alamat" value="<?= $row['alamat'] ?>">
+          <input type="text" class="form-control" name="alamat" placeholder="Masukkan Alamat" value="<?= htmlspecialchars($row['alamat']) ?>" required>
+          <div class="invalid-feedback">
+            Alamat harus diisi.
+          </div>
         </div>
       </div>
       <div class="col-md-6">
         <div class="mb-3">
           <label class="form-label">Nomor Telepon</label>
-          <input type="text" class="form-control" name="no_telp" placeholder="Masukkan Nomor Telepon" value="<?= $row['no_telp'] ?>">
+          <input type="text" class="form-control" name="no_telp" placeholder="Masukkan Nomor Telepon" value="<?= htmlspecialchars($row['no_telp']) ?>" required>
+          <div class="invalid-feedback">
+            Nomor Telepon harus diisi.
+          </div>
         </div>
       </div>
       <div class="col-12">
         <button class="btn btn-success" type="submit" name="submit">
           Edit Data
         </button>
-        <a href="index.php" class="btn btn-danger">Back</a>
+        <a href="index.php" class="btn btn-danger">Kembali</a>
       </div>
     </div>
   </form>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<script>
+  (function () {
+    'use strict'
+    var forms = document.querySelectorAll('.needs-validation')
+    Array.prototype.slice.call(forms)
+      .forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+          form.classList.add('was-validated')
+        }, false)
+      })
+  })()
+</script>
 </body>
 </html>

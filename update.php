@@ -2,9 +2,9 @@
 require 'db.php';
 
 $id = $_GET['id'];
-$student = $pdo->query("SELECT * FROM students WHERE id = $id")->fetch();
-$organisasi = $pdo->query("SELECT * FROM organisasi")->fetchAll();
-$jurusan_fakultas = $pdo->query("SELECT * FROM jurusan_fakultas")->fetchAll();
+$student = $conn->query("SELECT * FROM students WHERE id = $id")->fetch_assoc();
+$organisasi = $conn->query("SELECT * FROM organisasi")->fetch_all(MYSQLI_ASSOC);
+$jurusan_fakultas = $conn->query("SELECT * FROM jurusan_fakultas")->fetch_all(MYSQLI_ASSOC);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nama = $_POST['nama'];
@@ -12,12 +12,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $jurusan_fakultas_id = $_POST['jurusan_fakultas_id'];
 
     $sql = "UPDATE students SET nama = ?, organisasi_id = ?, jurusan_fakultas_id = ? WHERE id = ?";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([$nama, $organisasi_id, $jurusan_fakultas_id, $id]);
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('siii', $nama, $organisasi_id, $jurusan_fakultas_id, $id);
+    $stmt->execute();
 
     header("Location: index.php");
     exit;
 }
+// Mengambil Data dari Database
+// $student = $conn->query("SELECT * FROM students WHERE id = $id")->fetch_assoc();
+// $organisasi = $conn->query("SELECT * FROM organisasi")->fetch_all(MYSQLI_ASSOC);
+// $jurusan_fakultas = $conn->query("SELECT * FROM jurusan_fakultas")->fetch_all(MYSQLI_ASSOC);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

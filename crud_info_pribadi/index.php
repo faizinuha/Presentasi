@@ -3,12 +3,12 @@ require '../layouts/navbar.php';
 require_once __DIR__ . '/db.php';
 $query = mysqli_query($koneksi, "SELECT * FROM info_pribadi ");
 
-if (isset($_GET['cari'])) {
-  $cari = $_GET['cari'];
-  $query = mysqli_query($koneksi, "SELECT * FROM info_pribadi WHERE name LIKE '%$cari%' ");
+if (isset($_GET['submit'])) {
+  $submit = $_GET['submit'];
+  $query = mysqli_query($koneksi, "SELECT * FROM info_pribadi WHERE name LIKE '%$submit%' ");
 
-  $cari = mysqli_real_escape_string($koneksi, $_GET['cari']);
-  $query = mysqli_query($koneksi, "SELECT * FROM info_pribadi WHERE name LIKE '%$cari%' ");  
+  $submit = mysqli_real_escape_string($koneksi, $_GET['submit']);
+  $query = mysqli_query($koneksi, "SELECT * FROM info_pribadi WHERE name LIKE '%$submit%' ");  
 }
 
 ?>
@@ -46,6 +46,7 @@ if (isset($_GET['cari'])) {
         <tr>
           <th>ID</th>
           <th>name</th>
+          <th>Nisn</th>
           <th>alamat</th>
           <th>no_telp</th>
           <th>Aksi</th>
@@ -63,6 +64,9 @@ if (isset($_GET['cari'])) {
             </td>
             <td>
               <?= $row['nama'] ?>
+            </td>
+            <td>
+              <?= $row['nisn'] ?>
             </td>
             <td>
               <?= $row['alamat'] ?>

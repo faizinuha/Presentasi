@@ -2,7 +2,7 @@
 require_once __DIR__ . "/db.php";
 
 if (isset($_POST['submit'])) {
-    $input = ['name', 'alamat', 'no_telp'];
+    $input = ['name', 'nisn', 'alamat', 'no_telp'];
     $cond = true;
 
     foreach ($input as $value) {
@@ -14,12 +14,15 @@ if (isset($_POST['submit'])) {
 
     if ($cond) {
         $name = htmlentities($_POST['name']);
+        $nisn = htmlentities($_POST['nisn']); // Perbaiki variabel dari $name ke $nisn
         $alamat = htmlentities($_POST['alamat']);
         $no_telp = htmlentities($_POST['no_telp']);
 
-        $query = mysqli_query($koneksi, "INSERT INTO info_pribadi (nama, alamat, no_telp) VALUES ('$name', '$alamat', '$no_telp')");
+        // Prepared Statement
+        $stmt = $koneksi->prepare("INSERT INTO info_pribadi (nama, nisn, alamat, no_telp) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("ssss", $name, $nisn, $alamat, $no_telp);
 
-        if ($query) {
+        if ($stmt->execute()) {
             echo '<script>
                 alert("Berhasil Tambah Postingan");
                 window.location.href = "index.php";
@@ -30,10 +33,10 @@ if (isset($_POST['submit'])) {
                 window.location.href = "create.php";
             </script>';
         }
+        $stmt->close();
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -65,6 +68,13 @@ if (isset($_POST['submit'])) {
             </div>
         </div>
         <div class="col-md-4">
+            <label for="validationCustomNisn" class="form-label">Masukkan NISN</label>
+            <input type="text" class="form-control" id="validationCustomNisn" name="nisn" placeholder="Masukkan NISN (12)" max="12" required>
+            <div class="invalid-feedback">
+                NISN harus diisi.
+            </div>
+        </div>
+        <div class="col-md-4">
             <label for="validationCustomAlamat" class="form-label">Alamat</label>
             <input type="text" class="form-control" id="validationCustomAlamat" name="alamat" placeholder="Masukkan Alamat" required>
             <div class="invalid-feedback">
@@ -85,8 +95,7 @@ if (isset($_POST['submit'])) {
     </form>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-Yvp
-    eD31t/Q5PaXapZ4N6sd09j60Sa90BA1VieurW/dAiS6JXm" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpeD31t/Q5PaXapZ4N6sd09j60Sa90BA1VieurW/dAiS6JXm" crossorigin="anonymous"></script>
 <script>
     // Example starter JavaScript for disabling form submissions if there are invalid fields
     (function () {
