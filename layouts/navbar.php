@@ -10,38 +10,46 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
   <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <style>
+    .navbar-brand img {
+      width: 30px;
+      height: 24px;
+    }
+  </style>
 </head>
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/dashboard.php"><i class="bx bx-home"></i> Home</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="bx bx-data"></i> Data
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="/index.php"><i class='bx bx-user'></i> Data Mahasiswa</a></li>
-              <li><a class="dropdown-item" href="../jurusan/organisasi.php"><i class='bx bx-group'></i> Data Organisasi</a></li>
-              <li><a class="dropdown-item" href="../jurusan/index.php"><i class='bx bx-book'></i> Data Jurusan</a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="../data_dosen/index.php"><i class='bx bx-user-circle'></i> Data Dosen</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="../crud_info_pribadi/index.php"><i class='bx bx-list-ul'></i> Daftar Mahasiswa</a>
-          </li>
-        </ul>
-      </div>
+    <a class="navbar-brand" href="#">
+      <img src="../img/logopkldark.png" alt="Logo" class="d-inline-block align-text-top">
+      Toin University
+    </a> 
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/dashboard.php"><i class="bx bx-home"></i> Home</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bx bx-data"></i> Data
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="/index.php"><i class='bx bx-user'></i> Data Mahasiswa</a></li>
+            <li><a class="dropdown-item" href="../jurusan/organisasi.php"><i class='bx bx-group'></i> Data Organisasi</a></li>
+            <li><a class="dropdown-item" href="../jurusan/index.php"><i class='bx bx-book'></i> Data Jurusan</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="../data_dosen/index.php"><i class='bx bx-user-circle'></i> Data Dosen</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="../crud_info_pribadi/index.php"><i class='bx bx-list-ul'></i> Daftar Mahasiswa</a>
+        </li>
+      </ul>
     </div>
   </nav>
 

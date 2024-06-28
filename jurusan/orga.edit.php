@@ -26,7 +26,7 @@ if ($result->num_rows > 0) {
     $organisasi = $result->fetch_assoc();
 } else {
     // Jika tidak ditemukan, redirect ke halaman index
-    header("Location: organisasi.php");
+    header("Location: /index.php");
     exit;
 }
 

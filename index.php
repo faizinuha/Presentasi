@@ -48,10 +48,10 @@ $result = $conn->query($sql);
         <h2 class="my-4">Students</h2>
         <!-- Tombol untuk membuat data baru -->
         <a href="create.php" class="btn btn-primary btn-custom"><i class='bx bx-plus'></i> Create New Student</a>
-        <div class="table-container">
+        <div class="table-container ">
             <!-- Tabel untuk menampilkan data students -->
-            <table class="table table-bordered table-hover" id="data">
-                <thead class="table-primary">
+            <table class="table table-bordered table-hover " id="data">
+                <thead class="table-primary " >
                     <tr>
                         <th>ID</th>
                         <th>Nama</th>
