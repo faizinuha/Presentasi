@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 28, 2024 at 05:45 AM
+-- Generation Time: Jul 01, 2024 at 05:53 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.2.16
 
@@ -42,7 +42,8 @@ CREATE TABLE `data_dosen` (
 INSERT INTO `data_dosen` (`id`, `nama_dosen`, `alamat_dosen`, `no_telp`, `foto_dosen`) VALUES
 (3, 'Cojocaru12', 'Yokohama Toiin Uni', '08612360123', 'ohde.jpg'),
 (4, 'Ikeda', 'Yokohama Central', '087576857658712', 'ikeda.jpg'),
-(5, 'ando', 'Tokyo Central', '08767762312', 'ando.jpg');
+(5, 'ando', 'Tokyo Central', '08767762312', 'ando.jpg'),
+(6, 'shibayam', 'Tokyo', '08612397123', 'shibayama.jpg');
 
 -- --------------------------------------------------------
 
@@ -63,7 +64,8 @@ CREATE TABLE `info_pribadi` (
 --
 
 INSERT INTO `info_pribadi` (`id`, `nama`, `nisn`, `alamat`, `no_telp`) VALUES
-(7, 'Alung', '09721731782361', 'Jambewangi', '081230417361');
+(7, 'Alung', '09721731782361', 'Jambewangi', '081230417361'),
+(8, 'Fahriz', '087547745123', 'Awu-Awu', '089764664123');
 
 -- --------------------------------------------------------
 
@@ -87,7 +89,7 @@ INSERT INTO `jurusan_fakultas` (`id`, `nama`) VALUES
 (4, 'Bhs Jepang'),
 (5, 'Bisnis'),
 (6, 'Bhs China'),
-(7, 'Ips');
+(7, 'IPS');
 
 -- --------------------------------------------------------
 
@@ -132,9 +134,9 @@ CREATE TABLE `students` (
 INSERT INTO `students` (`id`, `nama`, `organisasi_id`, `jurusan_fakultas_id`) VALUES
 (1, 'rozak', 3, 4),
 (3, 'Alung', 6, 2),
-(4, 'Fahriz', 4, 1),
-(5, 'Farel Y', 2, 1),
-(6, 'AL Ahan', 1, 1);
+(4, 'Fahriz', 4, 5),
+(5, 'Farel Y', 2, 3),
+(8, 'Rohman', 1, 7);
 
 --
 -- Indexes for dumped tables
@@ -180,13 +182,13 @@ ALTER TABLE `students`
 -- AUTO_INCREMENT for table `data_dosen`
 --
 ALTER TABLE `data_dosen`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `info_pribadi`
 --
 ALTER TABLE `info_pribadi`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `jurusan_fakultas`
@@ -204,7 +206,7 @@ ALTER TABLE `organisasi`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables
