@@ -11,6 +11,7 @@
   <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <style>
+    
     .navbar-brand img {
       width: 30px;
       height: 24px;
@@ -41,6 +42,7 @@
             <li><a class="dropdown-item" href="/index.php"><i class='bx bx-user'></i> Data Mahasiswa</a></li>
             <li><a class="dropdown-item" href="../jurusan/organisasi.php"><i class='bx bx-group'></i> Data Organisasi</a></li>
             <li><a class="dropdown-item" href="../jurusan/index.php"><i class='bx bx-book'></i> Data Jurusan</a></li>
+            <li><a class="dropdown-item" href="../image.php"><i class='bx bx-book'></i> Profile Sense</a></li>
           </ul>
         </li>
         <li class="nav-item">

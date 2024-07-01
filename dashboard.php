@@ -45,7 +45,7 @@ $total_students = getTotalData($conn, "SELECT COUNT(*) as total FROM students");
   <!-- Memuat JavaScript Bootstrap -->
   <!-- bosstras -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
   <!-- Memuat AOS untuk animasi scrolling -->
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
@@ -119,7 +119,10 @@ $total_students = getTotalData($conn, "SELECT COUNT(*) as total FROM students");
   <?php include('layouts/navbar.php') ?>
 
   <div class="container">
-    <h2 class="text-center main-Y">Toin University of Yokohama Central</h2>
+    <h2 class="text-center main-Y"  >Toin University of Yokohama Central</h2>
+    <!-- <marquee behavior="scrool" class="text-center"  direction="up">
+      Toin University of Yokohama Central
+    </marquee> -->
     <p class="text-center">Welcome Daigaku University Toin University of Yokohama</p>
     <button type="button" class="btn btn-primary text" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
       See All Data
@@ -156,6 +159,7 @@ $total_students = getTotalData($conn, "SELECT COUNT(*) as total FROM students");
               </div>
             </div>
           </div>
+          <!-- image 1 -->
           <div class="col">
             <div class="card">
               <img src="negara/meksiko.jpg" class="card-img-top" alt="Meksiko" data-aos="zoom-in">
@@ -213,11 +217,33 @@ $total_students = getTotalData($conn, "SELECT COUNT(*) as total FROM students");
           </div>
           <div class="col">
             <div class="card">
+              <img src="negara/korea.webp" class="card-img-top" alt="korea" data-aos="flip-left">
+              <div class="card-body">
+                <h5 class="card-title">Korea</h5>
+                <div class="card-overlay">
+                  <a href="#" class="btn btn-primary" onclick="showAlert('korea')">Baca selengkapnya</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card">
               <img src="negara/india.avif" class="card-img-top" alt="India" data-aos="flip-left">
               <div class="card-body">
                 <h5 class="card-title">India</h5>
                 <div class="card-overlay">
                   <a href="#" class="btn btn-primary" onclick="showAlert('India')">Baca selengkapnya</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card">
+              <img src="negara/palestina.jpeg" class="card-img-top" alt="palestina" data-aos="flip-left">
+              <div class="card-body">
+                <h5 class="card-title">Pelestina</h5>
+                <div class="card-overlay">
+                  <a href="#" class="btn btn-primary" onclick="showAlert('palestina')">Baca selengkapnya</a>
                 </div>
               </div>
             </div>
@@ -236,8 +262,8 @@ $total_students = getTotalData($conn, "SELECT COUNT(*) as total FROM students");
               <div class="container mt-5">
                 <h1 class="text-center mb-4">Jumlah Semua Data</h1>
                 <div class="row">
-                  <div class="col-md-4 mb-4"> 
-                    <div class="card bg bg-primary" >
+                  <div class="col-md-4 mb-4">
+                    <div class="card bg bg-primary">
                       <div class="card-body">
                         <h5 class="card-title ">Data Dosen</h5>
                         <p class="card-text">
