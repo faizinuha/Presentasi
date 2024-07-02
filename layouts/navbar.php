@@ -53,8 +53,11 @@
           <a class="nav-link active" href="../data_dosen/index.php"><i class='bx bx-user-circle'></i> Data Dosen</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="../crud_info_pribadi/index.php"><i class='bx bx-list-ul'></i> Daftar Mahasiswa</a>
+          <a class="nav-link active" href="../crud_info_pribadi/index.php" ><i class='bx bx-list-ul'></i> Daftar Mahasiswa</a>
         </li>
+        <!-- <li class="nav-item">
+          <a href="../js/char.js" class="nav-link active">Char Al</li></a>
+        </li> -->
       </ul>
     </div>
   </nav>

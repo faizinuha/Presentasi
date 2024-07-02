@@ -339,6 +339,7 @@ $total_students = getTotalData($conn, "SELECT COUNT(*) as total FROM students");
             confirmButtonText: 'Tutup'
           });
         }
+       
       </script>
 </body>
 
