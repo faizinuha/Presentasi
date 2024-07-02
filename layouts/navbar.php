@@ -7,7 +7,7 @@
   <title>Yokohama-Central</title>
   <!-- link boosstrapo -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-  <link rel="icon" href="../negara/download.png">
+  <link rel="icon" href="../negara/download.png" style="border-radius: 20px 30px;" >
   <!-- link datatables -->
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
   <!-- link boosts icons -->
@@ -62,6 +62,8 @@
       </ul>
     </div>
   </nav>
+<!--  -->
+
 
   <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
   <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>

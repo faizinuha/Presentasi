@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/db.php';
+include '../layouts/navbar.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,28 +24,28 @@ require_once __DIR__ . '/db.php';
                 $data = mysqli_fetch_assoc($query);
                 ?>
                 <h1 class="text-2xl font-bold text-blue-500 mb-4 text-center">Detail Data Mahasiswa</h1>
-                <table class="w-full border-collapse mt-4">
-                    <tr>
-                        <th class="border border-blue-500 p-3 bg-blue-500 text-white font-bold">ID</th>
-                        <td class="border border-blue-500 p-3"><?= htmlspecialchars($data['id']) ?></td>
-                    </tr>
-                    <tr>
-                        <th class="border border-blue-500 p-3 bg-green-500 text-white font-bold">Nama Mahasiswa</th>
-                        <td class="border border-blue-500 p-3"><?= htmlspecialchars($data['nama']) ?></td>
-                    </tr>
-                    <tr>
-                        <th class="border border-blue-500 p-3 bg-yellow-500 text-white font-bold">NISN</th>
-                        <td class="border border-blue-500 p-3"><?= htmlspecialchars($data['nisn']) ?></td>
-                    </tr>
-                    <tr>
-                        <th class="border border-blue-500 p-3 bg-gray-500 text-white font-bold">Alamat</th>
-                        <td class="border border-blue-500 p-3"><?= htmlspecialchars($data['alamat']) ?></td>
-                    </tr>
-                    <tr>
-                        <th class="border border-blue-500 p-3 bg-red-500 text-white font-bold">No. Telepon</th>
-                        <td class="border border-blue-500 p-3"><?= htmlspecialchars($data['no_telp']) ?></td>
-                    </tr>
-                </table>
+                <div class="grid grid-cols-1 gap-4">
+                    <!-- <div class="p-4 bg-blue-100 rounded-lg">
+                        <h2 class="text-blue-500 font-bold">ID</h2>
+                        <p class="text-gray-700"><?= htmlspecialchars($data['id']) ?></p>
+                    </div> -->
+                    <div class="p-4 bg-green-100 rounded-lg">
+                        <h2 class="text-green-500 font-bold">Nama Mahasiswa</h2>
+                        <p class="text-gray-700"><?= htmlspecialchars($data['nama']) ?></p>
+                    </div>
+                    <div class="p-4 bg-yellow-100 rounded-lg">
+                        <h2 class="text-yellow-500 font-bold">Nim</h2>
+                        <p class="text-gray-700"><?= htmlspecialchars($data['Nim']) ?></p>
+                    </div>
+                    <div class="p-4 bg-gray-100 rounded-lg">
+                        <h2 class="text-gray-500 font-bold">Alamat</h2>
+                        <p class="text-gray-700"><?= htmlspecialchars($data['alamat']) ?></p>
+                    </div>
+                    <div class="p-4 bg-red-100 rounded-lg">
+                        <h2 class="text-red-500 font-bold">No. Telepon</h2>
+                        <p class="text-gray-700"><?= htmlspecialchars($data['no_telp']) ?></p>
+                    </div>
+                </div>
                 <a href="index.php" class="inline-block mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-red-500 transition-colors">Kembali</a>
             <?php } else { ?>
                 <p class="text-red-500 font-bold">Data Mahasiswa tidak ditemukan.</p>

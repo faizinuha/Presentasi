@@ -8,13 +8,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $alamat_dosen = $_POST["alamat_dosen"];
     $no_telp = $_POST["no_telp"];
 
+    // Mengambil nama file foto lama
+    $sql = "SELECT foto_dosen FROM data_dosen WHERE id=$id";
+    $result = $conn->query($sql);
+    $old_photo = '';
+    if ($result && $result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $old_photo = $row['foto_dosen'];
+    }
+
     // Memeriksa apakah ada file foto yang diunggah
     if (!empty($_FILES["foto_dosen"]["name"])) {
         // Upload Foto
         $target_dir = "uploads/";
-        $foto_dosen = basename($_FILES["foto_dosen"]["name"]);
+        $foto_dosen = uniqid() . '_' . basename($_FILES["foto_dosen"]["name"]);
         $target_file = $target_dir . $foto_dosen;
+
+        // Pengecekan apakah file sudah ada
+        if (file_exists($target_file)) {
+            echo '<script>
+                alert("File sudah ada, mohon ganti nama file.");
+                window.location.href = "update.php?id=' . $id . '";
+            </script>';
+            exit;
+        }
+
         move_uploaded_file($_FILES["foto_dosen"]["tmp_name"], $target_file);
+
+        // Menghapus foto lama jika ada
+        if (!empty($old_photo) && file_exists($target_dir . $old_photo)) {
+            unlink($target_dir . $old_photo);
+        }
 
         // Query untuk mengupdate data dosen dengan foto
         $sql = "UPDATE data_dosen SET nama_dosen='$nama_dosen', alamat_dosen='$alamat_dosen', no_telp='$no_telp', foto_dosen='$foto_dosen' WHERE id=$id";
@@ -38,12 +62,13 @@ if (isset($_GET["id"])) {
     $result = $conn->query($sql);
 
     // Memeriksa apakah data ditemukan
-    if ($result->num_rows > 0) {
+    if ($result && $result->num_rows > 0) {
         $row = $result->fetch_assoc();
     } else {
         echo '<script>window.location.href = "index.php";</script>';
     }
-    
+} else {
+    echo '<script>window.location.href = "index.php";</script>';
 }
 
 // Menutup koneksi
@@ -61,10 +86,8 @@ $conn->close();
     <h2 class="mt-5">Update Data Dosen</h2>
     <?php if (isset($row)): ?>
     <form method="post" action="" enctype="multipart/form-data">
-        <div class="form-group">
-            <label for="id">ID:</label>
-            <input type="text" class="form-control" id="id" name="id" value="<?php echo htmlspecialchars($row['id']); ?>" readonly>
-        </div>
+        <!-- Menggunakan input hidden untuk ID -->
+        <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['id']); ?>">
         <div class="form-group">
             <label for="nama_dosen">Nama Dosen:</label>
             <input type="text" class="form-control" id="nama_dosen" name="nama_dosen" value="<?php echo htmlspecialchars($row['nama_dosen']); ?>">

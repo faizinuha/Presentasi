@@ -1,6 +1,6 @@
 <?php
 require '../db.php';
-
+include '../layouts/navbar.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nama = $_POST['nama'];
 

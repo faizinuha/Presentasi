@@ -1,6 +1,6 @@
 <?php
 require 'db.php';
-
+require 'layouts/navbar.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nama = $_POST['nama'];
     $organisasi_id = $_POST['organisasi_id'];

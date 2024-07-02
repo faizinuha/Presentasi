@@ -1,6 +1,6 @@
 <?php
 require 'db.php';
-
+require 'layouts/navbar.php';
 $id = $_GET['id'];
 $student = $conn->query("SELECT * FROM students WHERE id = $id")->fetch_assoc();
 $organisasi = $conn->query("SELECT * FROM organisasi")->fetch_all(MYSQLI_ASSOC);

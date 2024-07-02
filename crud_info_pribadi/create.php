@@ -1,8 +1,9 @@
 <?php
 require_once __DIR__ . "/db.php";
+require_once __DIR__ . "/layouts/navbar.php";
 
 if (isset($_POST['submit'])) {
-    $input = ['name', 'nisn', 'alamat', 'no_telp'];
+    $input = ['name', 'Nim', 'alamat', 'no_telp'];
     $cond = true;
 
     foreach ($input as $value) {
@@ -14,13 +15,13 @@ if (isset($_POST['submit'])) {
 
     if ($cond) {
         $name = htmlentities($_POST['name']);
-        $nisn = htmlentities($_POST['nisn']); // Perbaiki variabel dari $name ke $nisn
+        $Nim = htmlentities($_POST['Nim']); // Perbaiki variabel dari $name ke $Nim
         $alamat = htmlentities($_POST['alamat']);
         $no_telp = htmlentities($_POST['no_telp']);
 
         // Prepared Statement
-        $stmt = $koneksi->prepare("INSERT INTO info_pribadi (nama, nisn, alamat, no_telp) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("ssss", $name, $nisn, $alamat, $no_telp);
+        $stmt = $conn->prepare("INSERT INTO info_pribadi (nama, Nim, alamat, no_telp) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("ssss", $name, $Nim, $alamat, $no_telp);
 
         if ($stmt->execute()) {
             echo '<script>
@@ -68,10 +69,10 @@ if (isset($_POST['submit'])) {
             </div>
         </div>
         <div class="col-md-4">
-            <label for="validationCustomNisn" class="form-label">Masukkan NISN</label>
-            <input type="number" class="form-control" id="validationCustomNisn" name="nisn" placeholder="Masukkan NISN (12)" maxlength="20" required>
+            <label for="validationCustomNim" class="form-label">Masukkan Nim</label>
+            <input type="number" class="form-control" id="validationCustomNim" name="Nim" placeholder="Masukkan Nim (12)" maxlength="20" required>
             <div class="invalid-feedback">
-                NISN harus diisi.Minimal 20 
+                Nim harus diisi.Minimal 20 
             </div>
         </div>
         <div class="col-md-4">

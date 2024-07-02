@@ -1,0 +1,7 @@
+1.nav not found [oke]
+2.nama foto random [oke]
+3.foto old remov[oke]
+4.id tidak tampil[OKE]
+5.css repair[wait][oke]
+6.koneksi ->conn[OKE]
+7.edit Ui[OKE]

@@ -9,7 +9,7 @@ if (isset($_GET['id'])) {
 }
 
 if (isset($_POST['submit'])) {
-  $input = ['nama', 'nisn', 'alamat', 'no_telp'];
+  $input = ['nama', 'Nim', 'alamat', 'no_telp'];
   $cond = true;
 
   foreach ($input as $value) {
@@ -22,15 +22,15 @@ if (isset($_POST['submit'])) {
 
   // Mengambil data dari input form
   $nama = htmlentities($_POST['nama']);
-  $nisn = htmlentities($_POST['nisn']);
+  $Nim = htmlentities($_POST['Nim']);
   $alamat = htmlentities($_POST['alamat']);
   $no_telp = htmlentities($_POST['no_telp']);
 
   if ($cond) {
     // Query update data siswa
-    $query = mysqli_query($koneksi, "UPDATE info_pribadi SET 
+    $query = mysqli_query($conn, "UPDATE info_pribadi SET 
       nama='$nama', 
-      nisn='$nisn',
+      Nim='$Nim',
       alamat='$alamat',  
       no_telp='$no_telp' 
       WHERE id='$id'");
@@ -69,10 +69,10 @@ if (isset($_POST['submit'])) {
       </div>
       <div class="col-md-6">
         <div class="mb-3">
-          <label class="form-label">NISN</label>
-          <input type="text" class="form-control" name="nisn" placeholder="Masukkan NISN" value="<?= htmlspecialchars($row['nisn']) ?>" required>
+          <label class="form-label">Nim</label>
+          <input type="text" class="form-control" name="Nim" placeholder="Masukkan Nim" value="<?= htmlspecialchars($row['Nim']) ?>" required>
           <div class="invalid-feedback">
-            NISN harus diisi.
+            Nim harus diisi.
           </div>
         </div>
       </div>

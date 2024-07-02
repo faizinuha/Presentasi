@@ -87,7 +87,7 @@ $total_students = getTotalData($conn, "SELECT COUNT(*) as total FROM students");
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(45deg, rgba(15, 37, 110, 1) 12%, rgba(26, 189, 162, 1) 61%, rgba(7, 21, 179, 1) 84%);
+      /* background: linear-gradient(45deg, rgba(15, 37, 110, 1) 12%, rgba(26, 189, 162, 1) 61%, rgba(7, 21, 179, 1) 84%); */
       background-blend-mode: normal;
       border-radius: 10px;
       color: white;
@@ -125,7 +125,7 @@ $total_students = getTotalData($conn, "SELECT COUNT(*) as total FROM students");
       Toin University of Yokohama Central
     </marquee> -->
     <p class="text-center">Welcome Daigaku University    Toin University of Yokohama</p>
-    <button type="button" class="btn btn-primary text" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    <button type="button" class="btn btn-light text" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
       See All Data
     </button>
     <hr>
@@ -174,7 +174,7 @@ $total_students = getTotalData($conn, "SELECT COUNT(*) as total FROM students");
           </div>
           <div class="col">
             <div class="card">
-              <img src="negara/spayol.jpg" class="card-img-top" alt="Spanyol" data-aos="zoom-in">
+              <img src="negara/spayol.jpg" class="card-img-top" alt="Spanyol" data-aos="fade-up">
               <div class="card-body">
                 <h5 class="card-title">Spanyol</h5>
                 <div class="card-overlay">
@@ -185,7 +185,7 @@ $total_students = getTotalData($conn, "SELECT COUNT(*) as total FROM students");
           </div>
           <div class="col">
             <div class="card">
-              <img src="negara/Prancis.jpg" class="card-img-top" alt="Perancis" data-aos="flip-left">
+              <img src="negara/Prancis.jpg" class="card-img-top" alt="Perancis" data-aos="fade-down">
               <div class="card-body">
                 <h5 class="card-title">Perancis</h5>
                 <div class="card-overlay">
@@ -207,7 +207,7 @@ $total_students = getTotalData($conn, "SELECT COUNT(*) as total FROM students");
           </div>
           <div class="col">
             <div class="card">
-              <img src="negara/Jepang.jpeg" class="card-img-top" alt="Jepang" data-aos="flip-left">
+              <img src="negara/Jepang.jpeg" class="card-img-top" alt="Jepang" data-aos="fade-up">
               <div class="card-body">
                 <h5 class="card-title">Jepang</h5>
                 <div class="card-overlay">
@@ -218,7 +218,7 @@ $total_students = getTotalData($conn, "SELECT COUNT(*) as total FROM students");
           </div>
           <div class="col">
             <div class="card">
-              <img src="negara/korea.webp" class="card-img-top" alt="korea" data-aos="flip-left">
+              <img src="negara/korea.webp" class="card-img-top" alt="korea" data-aos="fade-right">
               <div class="card-body">
                 <h5 class="card-title">Korea</h5>
                 <div class="card-overlay">
@@ -229,7 +229,7 @@ $total_students = getTotalData($conn, "SELECT COUNT(*) as total FROM students");
           </div>
           <div class="col">
             <div class="card">
-              <img src="negara/india.avif" class="card-img-top" alt="India" data-aos="flip-left">
+              <img src="negara/india.avif" class="card-img-top" alt="India" data-aos="fade-left">
               <div class="card-body">
                 <h5 class="card-title">India</h5>
                 <div class="card-overlay">
@@ -240,7 +240,7 @@ $total_students = getTotalData($conn, "SELECT COUNT(*) as total FROM students");
           </div>
           <div class="col">
             <div class="card">
-              <img src="negara/palestina.jpeg" class="card-img-top" alt="palestina" data-aos="flip-left">
+              <img src="negara/palestina.jpeg" class="card-img-top" alt="palestina" data-aos="fade-down">
               <div class="card-body">
                 <h5 class="card-title">Pelestina</h5>
                 <div class="card-overlay">
@@ -323,7 +323,28 @@ $total_students = getTotalData($conn, "SELECT COUNT(*) as total FROM students");
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <!-- <button type="button" class="btn btn-primary">Understood</button> -->
+              <!-- <button type="button" class="btn btn-primary">Understood</button><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Example</title>
+    <style>
+        /* Include the CSS code here */
+        .btn {
+            display: inline-block;
+            font-weight: 400;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            user-select: none;
+            border: 1px solid transparent;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            border-radius: 0.25rem;
+            transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15
+ -->
             </div>
           </div>
         </div>

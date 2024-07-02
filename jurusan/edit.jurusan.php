@@ -1,6 +1,6 @@
 <?php
 require '../db.php';
-
+require '../layouts/navbar.php';
 // Check if an ID is provided in the URL
 if (isset($_GET['id'])) {
     $id = $_GET['id'];

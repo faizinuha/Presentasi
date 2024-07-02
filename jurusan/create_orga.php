@@ -1,9 +1,7 @@
 <?php
 // Mengimpor file 'db.php' yang berisi koneksi ke database
 require '../db.php';
-
-// // Mengimpor file 'navbar.php' untuk menampilkan navigasi
-// require 'layouts/navbar.php';
+include '../layouts/navbar.php';
 
 // Inisialisasi variabel untuk menyimpan pesan hasil operasi tambah
 $message = '';
@@ -35,7 +33,6 @@ $conn->close();
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -55,27 +52,25 @@ $conn->close();
         }
     </style>
 </head>
-
 <body>
     <div class="container">
         <h2 class="my-4">Tambah Organisasi</h2>
         <!-- Form untuk menambahkan data organisasi baru -->
         <div class="form-container">
             <form method="POST">
-                <div class="mb-3">
+                <div class="form-group mb-3">
                     <label for="nama" class="form-label">Nama Organisasi:</label>
                     <input type="text" class="form-control" id="nama" name="nama" required>
                 </div>
                 <button type="submit" class="btn btn-primary">Simpan</button>
                 <a href="organisasi.php" class="btn btn-secondary">Kembali</a>
-                <p class="text-danger"><?= $message ?></p>
+                <p class="text-danger mt-3"><?= htmlspecialchars($message) ?></p>
             </form>
         </div>
     </div>
 
     <!-- Mengimpor JavaScript Bootstrap 5 dan dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"></script>
 </body>
-
 </html>
