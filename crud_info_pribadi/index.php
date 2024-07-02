@@ -1,14 +1,14 @@
 <?php
 require '../layouts/navbar.php';
-require_once __DIR__ . '/db.php';
-$query = mysqli_query($koneksi, "SELECT * FROM info_pribadi ");
+require_once __DIR__ . '../db.php';
+$query = mysqli_query($conn, "SELECT * FROM info_pribadi ");
 
 if (isset($_GET['submit'])) {
   $submit = $_GET['submit'];
-  $query = mysqli_query($koneksi, "SELECT * FROM info_pribadi WHERE name LIKE '%$submit%' ");
+  $query = mysqli_query($conn, "SELECT * FROM info_pribadi WHERE name LIKE '%$submit%' ");
 
-  $submit = mysqli_real_escape_string($koneksi, $_GET['submit']);
-  $query = mysqli_query($koneksi, "SELECT * FROM info_pribadi WHERE name LIKE '%$submit%' ");  
+  $submit = mysqli_real_escape_string($conn, $_GET['submit']);
+  $query = mysqli_query($conn, "SELECT * FROM info_pribadi WHERE name LIKE '%$submit%' ");  
 }
 
 ?>

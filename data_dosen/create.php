@@ -1,5 +1,5 @@
 <?php
-include 'db.php';
+include '../db.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nama_dosen = $_POST["nama_dosen"];

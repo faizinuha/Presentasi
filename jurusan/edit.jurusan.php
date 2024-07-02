@@ -1,5 +1,5 @@
 <?php
-require 'db.php';
+require '../db.php';
 
 // Check if an ID is provided in the URL
 if (isset($_GET['id'])) {

@@ -1,6 +1,6 @@
 <?php
 // Mengimpor file 'db.php' yang berisi koneksi ke database
-require 'db.php';
+require '../db.php';
 
 // // Mengimpor file 'navbar.php' untuk menampilkan navigasi
 // require 'layouts/navbar.php';
@@ -67,7 +67,7 @@ $conn->close();
                     <input type="text" class="form-control" id="nama" name="nama" required>
                 </div>
                 <button type="submit" class="btn btn-primary">Simpan</button>
-                <a href="index.php" class="btn btn-secondary">Kembali</a>
+                <a href="organisasi.php" class="btn btn-secondary">Kembali</a>
                 <p class="text-danger"><?= $message ?></p>
             </form>
         </div>

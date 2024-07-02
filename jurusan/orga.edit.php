@@ -1,6 +1,6 @@
 <?php
 // Mengimpor file 'db.php' yang berisi koneksi ke database
-require 'db.php';
+require '../db.php';
 
 // // Mengimpor file 'navbar.php' untuk menampilkan navigasi
 // require 'layouts/navbar.php';

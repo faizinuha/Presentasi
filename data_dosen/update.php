@@ -1,5 +1,5 @@
 <?php
-include 'db.php';
+include '../db.php';
 
 // Proses form jika method adalah POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

@@ -17,7 +17,7 @@ require_once __DIR__ . '/db.php';
         <?php
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
-            $query = mysqli_query($koneksi, "SELECT * FROM info_pribadi WHERE id = $id");
+            $query = mysqli_query($conn, "SELECT * FROM info_pribadi WHERE id = $id");
             // Mengambil Data dari Database
             if ($query && mysqli_num_rows($query) > 0) {
                 $data = mysqli_fetch_assoc($query);

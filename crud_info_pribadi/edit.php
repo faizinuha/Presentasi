@@ -4,7 +4,7 @@ require_once __DIR__ . "/db.php";
 if (isset($_GET['id'])) {
   $id = $_GET['id'];
   // Ambil data siswa berdasarkan ID
-  $query = mysqli_query($koneksi, "SELECT * FROM info_pribadi WHERE id='$id'");
+  $query = mysqli_query($conn, "SELECT * FROM info_pribadi WHERE id='$id'");
   $row = mysqli_fetch_array($query);
 }
 
