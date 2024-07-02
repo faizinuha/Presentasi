@@ -146,7 +146,7 @@ $total_students = getTotalData($conn, "SELECT COUNT(*) as total FROM students");
       </div>
       <div class="container mt-5">
         <h3 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" class="mb-4">Negara Paling Populer</h3>
-        <p>Telah bekerja sama dengan University Toin-Univ-of-Yokohama</p>
+        <p>Telah bekerja sama dengan University Toin-Univ-of-Yokoham <br> Negara jepang</p>
         <div class="row row-cols-1 row-cols-md-3 g-4">
           <!-- Kartu negara dengan animasi AOS dan SweetAlert -->
           <div class="col">
@@ -323,7 +323,7 @@ $total_students = getTotalData($conn, "SELECT COUNT(*) as total FROM students");
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Understood</button>
+              <!-- <button type="button" class="btn btn-primary">Understood</button> -->
             </div>
           </div>
         </div>

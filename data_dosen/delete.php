@@ -4,17 +4,37 @@ include 'db.php';
 if (isset($_GET["id"])) {
     $id = $_GET["id"];
 
-    $sql = "DELETE FROM data_dosen WHERE id=$id";
+    // 1. Ambil nama file gambar dari database
+    $stmt = $conn->prepare("SELECT foto_dosen FROM data_dosen WHERE id = ?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $stmt->bind_result($imageFile);
+    $stmt->fetch();
+    $stmt->close();
 
-    if ($conn->query($sql) === TRUE) {
-        echo '<script>
-        alert("Sukses Rmoving");
-        window.location.href = "index.php";
-    </script>';
-    } else {
-        echo "Error deleting record: " . $conn->error;
+    if ($imageFile) {
+        // 2. Hapus gambar dari folder
+        $imagePath = 'uploads/' . $imageFile; // Sesuaikan path dengan folder tempat gambar disimpan
+
+        if (file_exists($imagePath)) {
+            unlink($imagePath);
+        }
     }
 
+    // 3. Hapus entri dari database
+    $stmt = $conn->prepare("DELETE FROM data_dosen WHERE id = ?");
+    $stmt->bind_param("i", $id);
+
+    if ($stmt->execute()) {
+        echo '<script>
+            alert("Sukses Menghapus Data dan Gambar");
+            window.location.href = "index.php";
+        </script>';
+    } else {
+        echo "Error deleting record: " . $stmt->error;
+    }
+
+    $stmt->close();
     $conn->close();
 }
 ?>

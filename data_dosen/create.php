@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $alamat_dosen = $_POST["alamat_dosen"];
     $no_telp = $_POST["no_telp"];
 
-    // Upload Foto 
+    // Upload Foto
     $target_dir = "uploads/";
     $foto_dosen = basename($_FILES["foto_dosen"]["name"]);
     $target_file = $target_dir . $foto_dosen;

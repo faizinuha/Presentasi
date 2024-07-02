@@ -24,7 +24,12 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <style>
+    .top{
+      
+    }
+  </style>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary  sticky-top ">
     <a class="navbar-brand" href="#">
       <img src="../img/logopkldark.png" alt="Logo" class="d-inline-block align-text-top">
       Toin University

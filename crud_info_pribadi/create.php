@@ -69,21 +69,21 @@ if (isset($_POST['submit'])) {
         </div>
         <div class="col-md-4">
             <label for="validationCustomNisn" class="form-label">Masukkan NISN</label>
-            <input type="text" class="form-control" id="validationCustomNisn" name="nisn" placeholder="Masukkan NISN (12)" max="12" required>
+            <input type="number" class="form-control" id="validationCustomNisn" name="nisn" placeholder="Masukkan NISN (12)" maxlength="20" required>
             <div class="invalid-feedback">
-                NISN harus diisi.
+                NISN harus diisi.Minimal 20 
             </div>
         </div>
         <div class="col-md-4">
             <label for="validationCustomAlamat" class="form-label">Alamat</label>
             <input type="text" class="form-control" id="validationCustomAlamat" name="alamat" placeholder="Masukkan Alamat" required>
             <div class="invalid-feedback">
-                Alamat harus diisi.
+                Alamat Mohon  di isi.
             </div>
         </div>
         <div class="col-md-4">
             <label for="validationCustomNoTelp" class="form-label">No. Telepon</label>
-            <input type="number" class="form-control" id="validationCustomNoTelp" name="no_telp" placeholder="Masukkan No. Telepon" required>
+            <input type="number" class="form-control" id="validationCustomNoTelp" name="no_telp" placeholder="Masukkan No. Telepon" maxlength="12" required>
             <div class="invalid-feedback">
                 No. Telepon harus diisi.
             </div>
