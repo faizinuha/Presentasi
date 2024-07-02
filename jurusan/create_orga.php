@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Mengeksekusi statement
     if ($stmt->execute()) {
         // Jika tambah data berhasil, redirect ke halaman index
-        header("Location: index.php");
+        header("Location: organisasi.php");
         exit;
     } else {
         // Jika terjadi kesalahan, tampilkan pesan kesalahan

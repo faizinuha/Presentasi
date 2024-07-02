@@ -8,123 +8,51 @@ require_once __DIR__ . '/db.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detail Data Mahasiswa</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iK9t9gg+8R6e65mMkOcK5L/D5/F9w/JIcimoI9fUK5tr5+Uq6PVEUaI0N" crossorigin="anonymous">
-    <style>
-        .container {
-            padding: 20px;
-            margin-top: 50px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        h1 {
-            color: #007bff;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        table {
-            border-collapse: collapse;
-            width: 100%;
-            margin-top: 20px;
-        }
-
-        th,
-        td {
-            border: 1px solid #007bff;
-            padding: 12px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #dc3545;
-            color: white;
-            font-weight: bold;
-        }
-
-        .btn-action {
-            margin-right: 5px;
-        }
-
-        .text-danger {
-            color: #007bff;
-            font-weight: bold;
-        }
-
-        footer {
-            margin-top: 20px;
-            text-align: center;
-            color: #6c757d;
-        }
-
-        .Colors {
-            top: 20px;
-            left: -20px;
-            position: relative;
-
-            background-color: #007bff;
-            margin: 10px 20px;
-            padding: 10px;
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-            border-radius: 10px 25px 30px;
-            font-size: 100;
-        }
-
-        .Colors:hover {
-            background-color: #dc3545;
-            margin: 10px 20px;
-            padding: 10px;
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-            border-radius: 10px 25px 30px;
-            font-size: 100;
-        }
-    </style>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
-<body>
+<body class="bg-gray-100">
 
-    <div class="container">
+    <div class="container mx-auto p-6 mt-10 bg-white rounded-lg shadow-md">
         <?php
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
             $query = mysqli_query($koneksi, "SELECT * FROM info_pribadi WHERE id = $id");
-// Mengambil Data dari Database
+            // Mengambil Data dari Database
             if ($query && mysqli_num_rows($query) > 0) {
                 $data = mysqli_fetch_assoc($query);
                 ?>
-                <h1>Detail Data Mahasiswa</h1>
-                <table class="table table-bordered">
+                <h1 class="text-2xl font-bold text-blue-500 mb-4 text-center">Detail Data Mahasiswa</h1>
+                <table class="w-full border-collapse mt-4">
                     <tr>
-                        <th>ID</th>
-                        <td><?= $data['id'] ?></td>
+                        <th class="border border-blue-500 p-3 bg-blue-500 text-white font-bold">ID</th>
+                        <td class="border border-blue-500 p-3"><?= htmlspecialchars($data['id']) ?></td>
                     </tr>
                     <tr>
-                        <th>Nama Mahasiswa</th>
-                        <td><?= $data['nama'] ?></td>
+                        <th class="border border-blue-500 p-3 bg-green-500 text-white font-bold">Nama Mahasiswa</th>
+                        <td class="border border-blue-500 p-3"><?= htmlspecialchars($data['nama']) ?></td>
                     </tr>
                     <tr>
-                        <th>NISN</th>
-                        <td><?= $data['nisn'] ?></td>
+                        <th class="border border-blue-500 p-3 bg-yellow-500 text-white font-bold">NISN</th>
+                        <td class="border border-blue-500 p-3"><?= htmlspecialchars($data['nisn']) ?></td>
                     </tr>
                     <tr>
-                        <th>Alamat</th>
-                        <td><?= $data['alamat'] ?></td>
+                        <th class="border border-blue-500 p-3 bg-gray-500 text-white font-bold">Alamat</th>
+                        <td class="border border-blue-500 p-3"><?= htmlspecialchars($data['alamat']) ?></td>
                     </tr>
                     <tr>
-                        <th>No. Telepon</th>
-                        <td><?= $data['no_telp'] ?></td>
+                        <th class="border border-blue-500 p-3 bg-red-500 text-white font-bold">No. Telepon</th>
+                        <td class="border border-blue-500 p-3"><?= htmlspecialchars($data['no_telp']) ?></td>
                     </tr>
                 </table>
-                <a href="index.php" class="Colors">Kembali</a>
+                <a href="index.php" class="inline-block mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-red-500 transition-colors">Kembali</a>
             <?php } else { ?>
-                <p class="text-danger">Data Mahasiswa tidak ditemukan.</p>
+                <p class="text-red-500 font-bold">Data Mahasiswa tidak ditemukan.</p>
             <?php }
         } else { ?>
-            <p class="text-danger">ID Mahasiswa tidak valid.</p>
+            <p class="text-red-500 font-bold">ID Mahasiswa tidak valid.</p>
         <?php } ?>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-eA2JF5Rv/ZOdW4RDNTwSXJCJ9GCkDxiD61U5iFowJAgKwme4f85+tkI2F5xZC3Fsw" crossorigin="anonymous"></script>
 
 </body>
 

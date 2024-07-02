@@ -48,11 +48,12 @@ $result = $conn->query($sql);
         <tbody>
           <?php
           // Loop untuk mengambil setiap baris data dari hasil query
+          $id = 1;
           while ($jurusan = $result->fetch_assoc()) {
             ?>
             <tr>
               <!-- Menampilkan ID -->
-              <td><?= htmlspecialchars($jurusan['id']) ?></td>
+              <td><?= $id ?></td>
               <td><?= htmlspecialchars($jurusan['nama']) ?></td>
               <td>
                 <a href="edit.jurusan.php?id=<?= $jurusan['id'] ?>" class="btn btn-warning btn-sm"><i class='bx bx-pencil'></i></a>
@@ -60,6 +61,7 @@ $result = $conn->query($sql);
               </td>
             </tr>
             <?php
+            $id++;
           }
           ?>
         </tbody>

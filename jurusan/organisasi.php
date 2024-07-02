@@ -56,11 +56,12 @@ $result = $conn->query($sql);
                 <tbody>
                     <?php
                     // Loop untuk mengambil setiap baris data dari hasil query
+                    $id = 1;
                     while ($organisasi = $result->fetch_assoc()) {
                     ?>
                         <tr>
                             <!-- Menampilkan ID -->
-                            <td><?= $organisasi['id'] ?></td>
+                            <td><?= $id ?></td>
                             <!-- Menampilkan nama organisasi dengan htmlspecialchars untuk keamanan -->
                             <td><?= htmlspecialchars($organisasi['nama']) ?></td>
                             <td>
@@ -69,6 +70,7 @@ $result = $conn->query($sql);
                             </td    >
                         </tr>
                     <?php
+                    $id++;
                     }
                     ?>
                 </tbody>

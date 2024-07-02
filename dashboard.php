@@ -120,11 +120,11 @@ $total_students = getTotalData($conn, "SELECT COUNT(*) as total FROM students");
   <?php include('layouts/navbar.php') ?>
 
   <div class="container">
-    <h2 class="text-center main-Y"  >Toin University of Yokohama Central</h2>
+    <h2 class="text-center main-Y"  >Toin University of Yokohama Central</h2><br>
     <!-- <marquee behavior="scrool" class="text-center"  direction="up">
       Toin University of Yokohama Central
     </marquee> -->
-    <p class="text-center">Welcome Daigaku University Toin University of Yokohama</p>
+    <p class="text-center">Welcome Daigaku University    Toin University of Yokohama</p>
     <button type="button" class="btn btn-primary text" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
       See All Data
     </button>
