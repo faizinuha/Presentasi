@@ -12,7 +12,7 @@ include '../layouts/navbar.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Dosen</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css"> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
     <style>
@@ -51,10 +51,10 @@ include '../layouts/navbar.php';
                 <thead>
                     <tr>
                         <th>ID</th>
+                        <th>Foto Dosen</th>
                         <th>Nama Dosen</th>
                         <th>Alamat Dosen</th>
                         <th>No Telp</th>
-                        <th>Foto</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -68,10 +68,10 @@ include '../layouts/navbar.php';
                     ?>
                             <tr>
                                 <td><?= $id ?></td>
+                                <td><img src="uploads/<?= htmlspecialchars($row['foto_dosen']) ?>" alt="Foto Dosen" width="100"></td>
                                 <td><?= htmlspecialchars($row['nama_dosen']) ?></td>
                                 <td><?= htmlspecialchars($row['alamat_dosen']) ?></td>
                                 <td><?= htmlspecialchars($row['no_telp']) ?></td>
-                                <td><img src="uploads/<?= htmlspecialchars($row['foto_dosen']) ?>" alt="Foto Dosen" width="100"></td>
                                 <td>
                                     <a href="update.php?id=<?= $row['id'] ?>" class="btn btn-primary btn-sm"><i class='bx bx-pencil'></i></a>
                                     <a href="delete.php?id=<?= $row['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this data?')"><i class='bx bx-trash'></i></a>
