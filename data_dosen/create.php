@@ -11,10 +11,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $target_dir = "uploads/";
     $foto_dosen = uniqid() . '_' . basename($_FILES["foto_dosen"]["name"]);
     $target_file = $target_dir . $foto_dosen;
-    move_uploaded_file($_FILES["foto_dosen"]["tmp_name"], $target_file);
 
-    $sql = "INSERT INTO data_dosen (nama_dosen, alamat_dosen, no_telp, foto_dosen)
-            VALUES ('$nama_dosen', '$alamat_dosen', '$no_telp', '$foto_dosen')";
+    move_uploaded_file($_FILES["foto_dosen"]["tmp_name"], $target_file);
+    $sql = "INSERT INTO data_dosen (nama_dosen, alamat_dosen, no_telp, foto_dosen) 
+    VALUES ('$nama_dosen', '$alamat_dosen', '$no_telp', '$foto_dosen')";
 
     if ($conn->query($sql) === TRUE) {
         echo '<script>

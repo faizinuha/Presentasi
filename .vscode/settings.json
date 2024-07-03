@@ -1,5 +1,5 @@
 {
-  "CodeGPT.apiKey": "CodeGPT Plus Beta",
+  "CodeGPT.apiKey": "Custom",
   "CodeGPT.Autocomplete.enabled": true,
   "CodeGPT.Autocomplete.maxTokens": 304
 }
