@@ -27,12 +27,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Student</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
+
 <body>
     <div class="container">
         <h2 class="my-4">Edit Student</h2>
@@ -45,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="form-group">
                 <label for="organisasi_id">Organisasi:</label>
                 <select class="form-control" id="organisasi_id" name="organisasi_id">
-                    <?php foreach ($organisasi as $org): ?>
+                    <?php foreach ($organisasi as $org) : ?>
                         <option value="<?= $org['id'] ?>" <?= $org['id'] == $student['organisasi_id'] ? 'selected' : '' ?>><?= $org['nama'] ?></option>
                     <?php endforeach; ?>
                 </select>
@@ -54,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="form-group">
                 <label for="jurusan_fakultas_id">Jurusan Fakultas:</label>
                 <select class="form-control" id="jurusan_fakultas_id" name="jurusan_fakultas_id">
-                    <?php foreach ($jurusan_fakultas as $jur): ?>
+                    <?php foreach ($jurusan_fakultas as $jur) : ?>
                         <option value="<?= $jur['id'] ?>" <?= $jur['id'] == $student['jurusan_fakultas_id'] ? 'selected' : '' ?>><?= $jur['nama'] ?></option>
                     <?php endforeach; ?>
                 </select>
@@ -66,5 +68,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 </body>
+
 </html>
