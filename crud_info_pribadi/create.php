@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . "/db.php";
-require_once __DIR__ . "/layouts/navbar.php";
+include '../layouts/navbar.php';
 
 if (isset($_POST['submit'])) {
     $input = ['name', 'Nim', 'alamat', 'no_telp'];
@@ -15,26 +15,37 @@ if (isset($_POST['submit'])) {
 
     if ($cond) {
         $name = htmlentities($_POST['name']);
-        $Nim = htmlentities($_POST['Nim']); // Perbaiki variabel dari $name ke $Nim
+        $Nim = htmlentities($_POST['Nim']);
         $alamat = htmlentities($_POST['alamat']);
         $no_telp = htmlentities($_POST['no_telp']);
 
-        // Prepared Statement
-        $stmt = $conn->prepare("INSERT INTO info_pribadi (nama, Nim, alamat, no_telp) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("ssss", $name, $Nim, $alamat, $no_telp);
+        // Check if Nim already exists
+        $checkStmt = $conn->prepare("SELECT * FROM info_pribadi WHERE Nim = ?");
+        $checkStmt->bind_param("s", $Nim);
+        $checkStmt->execute();
+        $result = $checkStmt->get_result();
 
-        if ($stmt->execute()) {
-            echo '<script>
-                alert("Berhasil Tambah Postingan");
-                window.location.href = "index.php";
-            </script>';
+        if ($result->num_rows > 0) {
+            echo '<script>alert("Nim sudah ada, silakan masukkan Nim yang berbeda.");</script>';
         } else {
-            echo '<script>
-                alert("Gagal Tambah Postingan");
-                window.location.href = "create.php";
-            </script>';
+            // Prepared Statement for Insertion
+            $stmt = $conn->prepare("INSERT INTO info_pribadi (nama, Nim, alamat, no_telp) VALUES (?, ?, ?, ?)");
+            $stmt->bind_param("ssss", $name, $Nim, $alamat, $no_telp);
+
+            if ($stmt->execute()) {
+                echo '<script>
+                    alert("Berhasil Tambah Postingan");
+                    window.location.href = "index.php";
+                </script>';
+            } else {
+                echo '<script>
+                    alert("Gagal Tambah Postingan");
+                    window.location.href = "create.php";
+                </script>';
+            }
+            $stmt->close();
         }
-        $stmt->close();
+        $checkStmt->close();
     }
 }
 ?>
@@ -98,14 +109,11 @@ if (isset($_POST['submit'])) {
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpeD31t/Q5PaXapZ4N6sd09j60Sa90BA1VieurW/dAiS6JXm" crossorigin="anonymous"></script>
 <script>
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
     (function () {
         'use strict'
 
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
         var forms = document.querySelectorAll('.needs-validation')
 
-        // Loop over them and prevent submission
         Array.prototype.slice.call(forms)
             .forEach(function (form) {
                 form.addEventListener('submit', function (event) {
